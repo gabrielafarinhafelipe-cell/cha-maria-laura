@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Baby Chá da Maria Laura</title>
+<meta name="description" content="Sábado, 07 de novembro, às 17h. Confirme sua presença e escolha um presente.">
+<meta name="theme-color" content="#fcf3ee">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Baby Chá da Maria Laura">
+<meta property="og:description" content="Sábado, 07 de novembro, às 17h. Confirme sua presença até 01/11.">
+<meta property="og:image" content="https://cha-maria-laura.netlify.app/img/previa.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://cha-maria-laura.netlify.app/">
+<link rel="icon" href="/img/margarida.png">
+<link rel="preload" as="image" href="/img/menina.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Delius&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px)}
+body{margin:0}
+img{max-width:100%}
+
+/* Site hospedado. Layout: convite em coluna única (420–560px), seções como cartões de papel com borda pontilhada, navegação fixa no rodapé do celular.
+   Tema único e deliberado (papel creme do convite), cores explícitas. */
+:root{
+  --bg:#fcf3ee;
+  --paper:#fffaf6;
+  --blush:#fbe6e8;
+  --rose:#d65f80;
+  --rose-deep:#b8486a;
+  --rose-line:#eba7b8;
+  --cocoa:#7d5b55;
+  --ink:#5a4541;
+  --muted:#957a74;
+  --gold:#c99a3c;
+  --gold-soft:#f3e3bd;
+  --leaf:#7f9c6c;
+  --display:"Dancing Script","Brush Script MT",cursive;
+  --hand:"Delius","Comic Neue","Trebuchet MS",sans-serif;
+  --body:"Crimson Pro",Georgia,"Times New Roman",serif;
+  --radius:22px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-size:18px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 calc(92px + env(safe-area-inset-bottom,0px));
+  background-image:
+    radial-gradient(circle at 12% 8%, #fde9ec 0, transparent 38%),
+    radial-gradient(circle at 92% 30%, #fdf0e0 0, transparent 34%),
+    radial-gradient(circle at 10% 78%, #fdeaea 0, transparent 30%);
+  background-attachment:fixed;
+}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--rose-deep)}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:8px}
+
+/* ---------- Abertura ---------- */
+#abertura{
+  position:fixed;inset:0;z-index:50;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;overflow:auto;
+  padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  transition:opacity .9s ease, transform .9s cubic-bezier(.6,.05,.3,1);
+}
+#abertura.saindo{opacity:0;transform:translateY(-4%) scale(1.02);pointer-events:none}
+.capa{
+  width:100%;max-width:460px;text-align:center;position:relative;
+  border:2px dashed var(--rose-line);border-radius:30px;background:var(--paper);
+  padding:34px 22px 30px;display:flex;flex-direction:column;align-items:center;gap:14px;
+  box-shadow:0 20px 50px -30px rgba(184,72,106,.45);
+}
+.capa .canto{position:absolute;width:44px;opacity:.95}
+.capa .canto.e{left:-8px;bottom:-14px;transform:rotate(-12deg)}
+.capa .canto.d{right:-8px;bottom:-14px;transform:scaleX(-1) rotate(-12deg)}
+.capa .abre{font-family:var(--hand);color:var(--cocoa);font-size:1.05rem;letter-spacing:.02em}
+.capa .rosto{width:min(260px,70%);aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:50% 30%;
+  border:3px solid #fff;box-shadow:0 0 0 2px var(--rose-line), 0 14px 30px -18px rgba(125,91,85,.6);max-width:100%}
+.capa h1{font-family:var(--hand);font-weight:400;color:var(--cocoa);font-size:1.15rem;letter-spacing:.16em;text-transform:uppercase}
+.capa .nome{font-family:var(--display);color:var(--rose);font-size:clamp(2.8rem,12vw,3.6rem);line-height:1;font-weight:700}
+.capa .quando{font-family:var(--hand);color:var(--muted);font-size:.95rem}
+.btn{
+  appearance:none;border:0;cursor:pointer;text-decoration:none;
+  font-family:var(--hand);font-size:1rem;letter-spacing:.02em;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:48px;padding:12px 22px;border-radius:999px;
+  background:var(--rose);color:#fff;box-shadow:0 8px 18px -10px rgba(184,72,106,.8);
+  transition:transform .2s ease, background .2s ease;
+}
+.btn:hover{background:var(--rose-deep)}
+.btn:active{transform:scale(.97)}
+.btn.sec{background:var(--paper);color:var(--rose-deep);box-shadow:inset 0 0 0 1.5px var(--rose-line)}
+.btn.sec:hover{background:var(--blush)}
+.btn[aria-disabled="true"]{opacity:.5;pointer-events:none}
+.btn svg{width:20px;height:20px;flex:none}
+.pulse{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 18px -10px rgba(184,72,106,.8),0 0 0 0 rgba(214,95,128,.35)}50%{box-shadow:0 8px 18px -10px rgba(184,72,106,.8),0 0 0 12px rgba(214,95,128,0)}}
+
+/* ---------- Topo ---------- */
+.topo{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:18px}
+.topo .menina{
+  width:100%;max-width:100%;display:block;margin-bottom:-6px;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 72%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 72%,transparent 100%);
+}
+.topo .eyebrow{font-family:var(--hand);color:var(--cocoa);font-size:1rem;letter-spacing:.06em}
+.topo h2{font-family:var(--hand);font-weight:400;color:var(--cocoa);font-size:1.25rem;letter-spacing:.2em;text-transform:uppercase}
+.topo .nome{font-family:var(--display);color:var(--rose);font-weight:700;font-size:clamp(3.4rem,15vw,4.6rem);line-height:.95;margin-top:2px}
+.topo .laco{width:150px;max-width:60%;margin-top:4px}
+.topo .msg{font-style:italic;font-size:1.2rem;color:var(--ink);max-width:30ch}
+.borboleta{position:absolute;width:44px;top:26%;right:4%;animation:voa 7s ease-in-out infinite}
+@keyframes voa{0%,100%{transform:translate(0,0) rotate(-6deg)}25%{transform:translate(-14px,-10px) rotate(4deg)}50%{transform:translate(-4px,-22px) rotate(-2deg)}75%{transform:translate(8px,-8px) rotate(6deg)}}
+.relativo{position:relative}
+
+/* ---------- Cartões ---------- */
+.cartao{
+  background:var(--paper);border:1.5px dashed var(--rose-line);border-radius:var(--radius);
+  padding:24px 20px;display:flex;flex-direction:column;gap:16px;scroll-margin-top:calc(16px + env(safe-area-inset-top,0px));
+}
+.cab{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.cab .flor{width:26px;height:26px}
+.cab h3{font-family:var(--display);color:var(--rose);font-weight:700;font-size:2.1rem;line-height:1.05}
+.cab p{color:var(--muted);font-size:1rem;max-width:36ch}
+
+/* Informações */
+.infos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.info{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:4px 8px;min-width:0}
+.info + .info{border-left:1.5px dashed var(--rose-line)}
+.info svg{width:34px;height:34px;color:var(--rose)}
+.info .rot{font-family:var(--hand);color:var(--cocoa);font-size:.95rem;letter-spacing:.06em}
+.info .val{font-size:1.05rem;line-height:1.3;color:var(--ink)}
+@media (max-width:420px){
+  .infos{grid-template-columns:1fr 1fr}
+  .info.local{grid-column:1 / -1;border-left:0;border-top:1.5px dashed var(--rose-line);padding-top:14px;margin-top:10px}
+}
+.acoes{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.prazo{
+  align-self:center;text-align:center;font-family:var(--hand);color:var(--rose-deep);font-size:.95rem;
+  background:var(--blush);border-radius:999px;padding:8px 18px;
+}
+
+/* Contador */
+.contador{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.unid{display:flex;flex-direction:column;align-items:center;gap:2px;padding:14px 4px 10px;border-radius:18px;background:linear-gradient(180deg,#fff 0,var(--blush) 100%);box-shadow:inset 0 0 0 1px #f6d7de}
+.unid b{font-family:var(--hand);font-weight:400;font-size:clamp(1.7rem,8vw,2.3rem);line-height:1;color:var(--rose-deep);font-variant-numeric:tabular-nums}
+.unid span{font-family:var(--hand);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.contador-fim{text-align:center;font-family:var(--display);font-size:2rem;color:var(--rose)}
+
+/* Formulário */
+form{display:flex;flex-direction:column;gap:16px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo > label,.campo > .rotulo{font-family:var(--hand);color:var(--cocoa);font-size:.98rem}
+input[type=text],textarea{
+  font:inherit;font-size:1.05rem;color:var(--ink);background:#fff;
+  border:1.5px solid #efd3d8;border-radius:14px;padding:12px 14px;width:100%;
+}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3px #f8dbe3}
+textarea{min-height:84px;resize:vertical}
+.escolha{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.escolha input{position:absolute;opacity:0;pointer-events:none}
+.escolha label{
+  display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;min-height:52px;padding:10px;
+  border-radius:16px;background:#fff;border:1.5px solid #efd3d8;cursor:pointer;font-family:var(--hand);color:var(--cocoa);font-size:.98rem;
+  transition:background .2s, border-color .2s, color .2s;
+}
+.escolha input:checked + label{background:var(--rose);border-color:var(--rose);color:#fff}
+.escolha input:focus-visible + label{outline:2px solid var(--rose);outline-offset:3px}
+.passo{display:flex;align-items:center;gap:14px}
+.passo button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--rose-line);background:#fff;color:var(--rose-deep);font-size:1.5rem;line-height:1;cursor:pointer;font-family:var(--hand)}
+.passo button:hover{background:var(--blush)}
+.passo output{font-family:var(--hand);font-size:1.6rem;color:var(--rose-deep);min-width:2ch;text-align:center;font-variant-numeric:tabular-nums}
+.passo .total{color:var(--muted);font-size:.98rem}
+.ajuda{color:var(--muted);font-size:.95rem}
+.erro{color:#b3364f;font-size:.95rem}
+.escolhidos{display:flex;flex-wrap:wrap;gap:8px}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--gold-soft);color:#7a5a1d;border-radius:999px;padding:5px 6px 5px 12px;font-size:.95rem}
+.tag button{border:0;background:#fff;color:#7a5a1d;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:1rem;line-height:1}
+.vazio{color:var(--muted);font-size:.98rem;font-style:italic}
+.resultado{display:flex;flex-direction:column;gap:12px;background:var(--blush);border-radius:18px;padding:18px}
+.resultado h4{margin:0;font-family:var(--hand);font-weight:400;color:var(--rose-deep);font-size:1.1rem}
+.resultado pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--body);font-size:1rem;background:#fff;border-radius:12px;padding:12px 14px;color:var(--ink)}
+
+/* Presentes */
+.grupos{display:flex;flex-direction:column;gap:22px}
+.grupo h4{
+  margin:0 0 8px;font-family:var(--hand);font-weight:400;color:var(--cocoa);font-size:1.05rem;letter-spacing:.06em;
+  display:flex;align-items:center;gap:10px;
+}
+.grupo h4::after{content:"";flex:1;border-top:1.5px dashed var(--rose-line)}
+.itens{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.sub{font-size:1.05rem;padding:12px 0 2px;color:var(--ink)}
+.sub small{color:var(--muted);font-size:.9rem;margin-left:6px}
+.linha{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f4e2e2}
+.linha:last-child{border-bottom:0}
+.linha.tam{padding-left:14px}
+.linha .nm{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.linha .tit{font-size:1.05rem;line-height:1.3}
+.linha .tit small{display:block;color:var(--muted);font-size:.9rem}
+.linha .resta{font-family:var(--hand);font-size:.82rem;color:var(--leaf);letter-spacing:.02em}
+.barra-q{height:4px;border-radius:4px;background:#f6e6e8;overflow:hidden;max-width:160px}
+.barra-q i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#e8b84a);border-radius:4px}
+.linha.esgotado .tit{color:var(--muted)}
+.linha.esgotado .resta{color:var(--muted)}
+.linha.pouco .resta{color:#b0742a}
+.ctrl{flex:none;display:flex;align-items:center;gap:6px}
+.pill-esg{font-family:var(--hand);font-size:.85rem;color:#8d6e69;background:#f3e8e6;border-radius:999px;padding:6px 12px;letter-spacing:.04em}
+.escolher{
+  appearance:none;cursor:pointer;font-family:var(--hand);font-size:.9rem;color:var(--rose-deep);
+  background:#fff;border:1.5px solid var(--rose-line);border-radius:999px;padding:6px 14px;min-height:38px;
+}
+.escolher:hover{background:var(--blush)}
+.mini{display:flex;align-items:center;gap:2px;background:var(--gold-soft);border-radius:999px;padding:3px}
+.mini button{width:34px;height:34px;border-radius:50%;border:0;background:#fff;color:#7a5a1d;font-size:1.2rem;line-height:1;cursor:pointer;font-family:var(--hand)}
+.mini button:disabled{opacity:.35;cursor:default}
+.mini output{min-width:2.2ch;text-align:center;font-family:var(--hand);color:#6d4f14;font-variant-numeric:tabular-nums}
+.atualizado{font-size:.9rem;color:var(--muted);text-align:center;font-style:italic}
+
+
+/* Convite original */
+.original{width:100%;border-radius:18px;display:block;box-shadow:0 18px 40px -26px rgba(125,91,85,.7);max-width:100%}
+details summary{cursor:pointer;font-family:var(--hand);color:var(--rose-deep);text-align:center;list-style:none;padding:6px}
+details summary::-webkit-details-marker{display:none}
+details[open] summary{margin-bottom:12px}
+
+.linkbox{display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.linkbox code{font-family:ui-monospace,Menlo,monospace;font-size:.85rem;background:#fff;border-radius:10px;padding:10px 12px;word-break:break-all;user-select:all;box-shadow:inset 0 0 0 1px #f3dfe2}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;
+  background:var(--cocoa);color:#fff;font-family:var(--hand);font-size:.95rem;padding:10px 18px;border-radius:999px;transition:.3s;z-index:40;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+footer{text-align:center;color:var(--muted);font-family:var(--hand);font-size:.95rem;padding:6px 0 10px;display:flex;flex-direction:column;align-items:center;gap:6px}
+footer img{width:34px}
+
+/* Navegação inferior */
+nav.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  background:rgba(255,250,246,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-top:1.5px dashed var(--rose-line);
+  padding:8px max(12px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));
+}
+nav.barra ul{list-style:none;margin:0 auto;padding:0;max-width:560px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+nav.barra a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--cocoa);font-family:var(--hand);font-size:.78rem;padding:6px 2px;border-radius:12px}
+nav.barra a:hover,nav.barra a.ativo{color:var(--rose-deep);background:var(--blush)}
+nav.barra svg{width:22px;height:22px}
+
+canvas#petalas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+
+/* Entrada suave das seções (visíveis por padrão) */
+.anima .cartao,.anima .topo > *{animation:sobe .8s cubic-bezier(.2,.7,.2,1) both}
+.anima .topo > *:nth-child(2){animation-delay:.08s}
+.anima .topo > *:nth-child(3){animation-delay:.16s}
+.anima .topo > *:nth-child(4){animation-delay:.24s}
+.anima .topo > *:nth-child(5){animation-delay:.32s}
+.anima .topo > *:nth-child(6){animation-delay:.4s}
+@keyframes sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-margarida" viewBox="0 0 32 32">
+      <g fill="#fff" stroke="#eba7b8" stroke-width=".9">
+        <ellipse cx="16" cy="7" rx="3.4" ry="6"/><ellipse cx="16" cy="25" rx="3.4" ry="6"/>
+        <ellipse cx="7" cy="16" rx="6" ry="3.4"/><ellipse cx="25" cy="16" rx="6" ry="3.4"/>
+        <ellipse cx="9.6" cy="9.6" rx="3.2" ry="5.6" transform="rotate(-45 9.6 9.6)"/>
+        <ellipse cx="22.4" cy="22.4" rx="3.2" ry="5.6" transform="rotate(-45 22.4 22.4)"/>
+        <ellipse cx="22.4" cy="9.6" rx="3.2" ry="5.6" transform="rotate(45 22.4 9.6)"/>
+        <ellipse cx="9.6" cy="22.4" rx="3.2" ry="5.6" transform="rotate(45 9.6 22.4)"/>
+      </g>
+      <circle cx="16" cy="16" r="4.4" fill="#e8b84a" stroke="#c99a3c" stroke-width=".8"/>
+    </symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M8 3v4M16 3v4M3.5 9.5h17"/><path d="M12 17.2s-3-1.8-3-3.6a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 1.8-3 3.6-3 3.6z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-hora" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-local" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><path d="M12 12.6s-2.2-1.3-2.2-2.6a1.1 1.1 0 0 1 2.2-.6 1.1 1.1 0 0 1 2.2.6c0 1.3-2.2 2.6-2.2 2.6z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-coracao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.1A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/></symbol>
+    <symbol id="i-presente" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="1.5"/><rect x="3" y="7" width="18" height="3.5" rx="1"/><path d="M12 7v13M12 7c-1-3-5-4-5-1.5S10 7 12 7zm0 0c1-3 5-4 5-1.5S14 7 12 7z"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></symbol>
+    <symbol id="i-whats" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.8-1.3A9.4 9.4 0 1 0 12 2.5zm0 17.1a7.7 7.7 0 0 1-3.9-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A7.7 7.7 0 1 1 12 19.6zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.3 6.3 0 0 1-3.1-2.7c-.2-.4.2-.4.7-1.3.1-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></symbol>
+    <symbol id="i-mapa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4z"/><path d="M9 4v14M15 6v14"/></symbol>
+    <symbol id="i-copiar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-envelope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.5 7 8.5 6.5L20.5 7"/></symbol>
+  </defs>
+</svg>
+
+<!-- ABERTURA -->
+<div id="abertura" role="dialog" aria-modal="true" aria-labelledby="capa-titulo">
+  <div class="capa">
+    <img class="canto e" src="/img/margarida.png" alt="">
+    <img class="canto d" src="/img/margarida.png" alt="">
+    <p class="abre">Um dia cheio de amor está chegando...</p>
+    <img class="rosto" src="/img/menina.jpg" alt="Ilustração da Maria Laura sorrindo, com uma margarida no cabelo">
+    <h1 id="capa-titulo">Baby Chá da</h1>
+    <p class="nome">Maria Laura</p>
+    <p class="quando">Sábado, 07 de novembro · 17h</p>
+    <button class="btn pulse" id="abrir" type="button">
+      <svg aria-hidden="true"><use href="#i-envelope"/></svg> Abrir o convite
+    </button>
+  </div>
+</div>
+
+<canvas id="petalas" aria-hidden="true"></canvas>
+
+<main class="wrap" id="conteudo">
+  <!-- TOPO -->
+  <header class="topo relativo" id="convite">
+    <img class="menina" src="/img/menina.jpg" alt="Ilustração da Maria Laura entre margaridas">
+    <p class="eyebrow">Um dia cheio de amor está chegando...</p>
+    <h2>Baby Chá da</h2>
+    <p class="nome">Maria Laura</p>
+    <img class="laco" src="/img/laco.png" alt="">
+    <p class="msg">Vamos celebrar a chegada da nossa pequena Maria Laura...</p>
+    <img class="borboleta" src="/img/borboleta.png" alt="">
+  </header>
+
+  <!-- INFORMAÇÕES -->
+  <section class="cartao" aria-labelledby="t-quando">
+    <div class="cab">
+      <svg class="flor" aria-hidden="true"><use href="#i-margarida"/></svg>
+      <h3 id="t-quando">Quando e onde</h3>
+    </div>
+    <div class="infos">
+      <div class="info">
+        <svg aria-hidden="true"><use href="#i-cal"/></svg>
+        <span class="rot">Data</span>
+        <span class="val">07 de novembro<br>(sábado)</span>
+      </div>
+      <div class="info">
+        <svg aria-hidden="true"><use href="#i-hora"/></svg>
+        <span class="rot">Hora</span>
+        <span class="val">17h</span>
+      </div>
+      <div class="info local">
+        <svg aria-hidden="true"><use href="#i-local"/></svg>
+        <span class="rot">Local</span>
+        <span class="val">Conjunto Julia Seffer,<br>Rua 10, N 99</span>
+      </div>
+    </div>
+    <div class="acoes">
+      <a class="btn" id="maps" target="_blank" rel="noopener" href="#">
+        <svg aria-hidden="true"><use href="#i-mapa"/></svg> Abrir no Google Maps
+      </a>
+      <a class="btn sec" id="waze" target="_blank" rel="noopener" href="#">Abrir no Waze</a>
+    </div>
+  </section>
+
+  <!-- CONTADOR -->
+  <section class="cartao" aria-labelledby="t-falta">
+    <div class="cab">
+      <svg class="flor" aria-hidden="true"><use href="#i-margarida"/></svg>
+      <h3 id="t-falta">Falta pouquinho</h3>
+      <p>Contagem até sábado, 07 de novembro, às 17h</p>
+    </div>
+    <div class="contador" id="contador" aria-live="off">
+      <div class="unid"><b id="c-d">--</b><span>dias</span></div>
+      <div class="unid"><b id="c-h">--</b><span>horas</span></div>
+      <div class="unid"><b id="c-m">--</b><span>min</span></div>
+      <div class="unid"><b id="c-s">--</b><span>seg</span></div>
+    </div>
+    <p class="contador-fim" id="contador-fim" hidden></p>
+  </section>
+
+  <!-- CONFIRMAÇÃO -->
+  <section class="cartao" id="confirmar" aria-labelledby="t-rsvp">
+    <div class="cab">
+      <svg class="flor" aria-hidden="true"><use href="#i-margarida"/></svg>
+      <h3 id="t-rsvp">Confirme sua presença</h3>
+      <p>Preencha abaixo. Sua resposta e os presentes escolhidos ficam reservados na hora.</p>
+    </div>
+    <p class="prazo">Confirmar presença até dia 01 de novembro</p>
+
+    <form id="form-rsvp" novalidate>
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Nome e sobrenome" maxlength="80">
+      </div>
+
+      <div class="campo" role="radiogroup" aria-labelledby="r-pres">
+        <span class="rotulo" id="r-pres">Você vai?</span>
+        <div class="escolha">
+          <input type="radio" name="presenca" id="p-sim" value="sim">
+          <label for="p-sim">Sim, vou com certeza</label>
+          <input type="radio" name="presenca" id="p-nao" value="nao">
+          <label for="p-nao">Não poderei ir</label>
+        </div>
+      </div>
+
+      <div class="campo" id="bloco-acomp">
+        <span class="rotulo" id="r-acomp">Acompanhantes (sem contar você)</span>
+        <div class="passo" role="group" aria-labelledby="r-acomp">
+          <button type="button" id="menos" aria-label="Diminuir acompanhantes">−</button>
+          <output id="acomp" aria-live="polite">0</output>
+          <button type="button" id="mais" aria-label="Aumentar acompanhantes">+</button>
+          <span class="total" id="total-pessoas">1 pessoa no total</span>
+        </div>
+      </div>
+
+      <div class="campo">
+        <span class="rotulo">Presentes que você pretende levar <span class="ajuda">(opcional)</span></span>
+        <div class="escolhidos" id="escolhidos"></div>
+        <a href="#presentes" class="ajuda">Escolher na lista de presentes</a>
+      </div>
+
+      <div class="campo">
+        <label for="recado">Recadinho para a Maria Laura <span class="ajuda">(opcional)</span></label>
+        <textarea id="recado" name="recado" maxlength="400" placeholder="Escreva um carinho..."></textarea>
+      </div>
+
+      <p class="erro" id="erro" role="alert" hidden></p>
+      <button class="btn" type="submit" id="enviar-rsvp"><svg aria-hidden="true"><use href="#i-coracao"/></svg> Confirmar presença</button>
+    </form>
+
+    <div class="resultado" id="resultado" hidden tabindex="-1">
+      <h4 id="res-titulo">Presença confirmada!</h4>
+      <pre id="mensagem"></pre>
+      <div class="acoes">
+        <a class="btn" id="enviar-whats" target="_blank" rel="noopener" href="#">
+          <svg aria-hidden="true"><use href="#i-whats"/></svg> Avisar pelo WhatsApp
+        </a>
+        <button class="btn sec" type="button" id="copiar-msg"><svg aria-hidden="true"><use href="#i-copiar"/></svg> Copiar mensagem</button>
+      </div>
+      <p class="ajuda" id="nota-envio"></p>
+      <button class="btn sec" type="button" id="de-novo" hidden>Confirmar outra pessoa</button>
+    </div>
+  </section>
+
+  <!-- PRESENTES -->
+  <section class="cartao" id="presentes" aria-labelledby="t-pres">
+    <div class="cab">
+      <svg class="flor" aria-hidden="true"><use href="#i-margarida"/></svg>
+      <h3 id="t-pres">Lista de presentes</h3>
+      <p>Veja o que ainda falta e escolha quantos itens você vai levar.</p>
+    </div>
+    <p class="aviso">As quantidades mudam na hora em que cada convidado confirma. O presente fica reservado quando você confirma a presença.</p>
+    <p class="atualizado" id="atualizado" hidden></p>
+    <div class="grupos" id="grupos"></div>
+    <a class="btn sec" href="#confirmar" style="align-self:center">Ir para a confirmação</a>
+  </section>
+
+  <!-- CONVITE ORIGINAL -->
+  <section class="cartao" aria-labelledby="t-orig">
+    <details>
+      <summary id="t-orig">Ver o convite completo</summary>
+      <img class="original" src="/img/convite.jpg" alt="Convite do Chá de bebê da Maria Laura: 07 de novembro (sábado), 17h, Conjunto Julia Seffer, Rua 10, N 99. Confirmar presença até dia 01 de novembro." loading="lazy">
+    </details>
+  </section>
+
+
+  <footer>
+    <img src="/img/margarida.png" alt="">
+    <span>Com amor, esperamos por você.</span>
+  </footer>
+</main>
+
+<nav class="barra" aria-label="Seções do convite">
+  <ul>
+    <li><a href="#convite"><svg aria-hidden="true"><use href="#i-coracao"/></svg>Convite</a></li>
+    <li><a href="#confirmar"><svg aria-hidden="true"><use href="#i-envelope"/></svg>Confirmar</a></li>
+    <li><a href="#presentes"><svg aria-hidden="true"><use href="#i-presente"/></svg>Presentes</a></li>
+  </ul>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module">
+import { PRESENTES, LINHAS, slug } from "/catalogo.mjs";
+(function(){
+  var WHATSAPP = "5591984462981";
+  var EVENTO = new Date("2026-11-07T17:00:00-03:00");
+  var ENDERECO = "Conjunto Julia Seffer, Rua 10, 99, Ananindeua - PA";
+  var $ = function(id){return document.getElementById(id)};
+
+  /* ===== Toast ===== */
+  var tTimer;
+  function toast(msg){var t=$("toast");t.textContent=msg;t.classList.add("on");clearTimeout(tTimer);tTimer=setTimeout(function(){t.classList.remove("on")},2400)}
+
+  function copiar(texto, ok, fallbackEl){
+    function falha(){
+      if(fallbackEl){fallbackEl.hidden=false;var c=fallbackEl.querySelector("code,pre")||fallbackEl;selecionar(c)}
+      toast("Selecione o texto e copie manualmente");
+    }
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(texto).then(function(){toast(ok)},falha);
+      }else falha();
+    }catch(e){falha()}
+  }
+  function selecionar(el){try{var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}}
+
+  /* ===== Abertura com pétalas ===== */
+  var reduz = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var cv=$("petalas"), ctx=cv.getContext("2d"), petalas=[], rodando=false, fimChuva=0;
+  function ajusta(){var d=Math.min(window.devicePixelRatio||1,2);cv.width=innerWidth*d;cv.height=innerHeight*d;ctx.setTransform(d,0,0,d,0,0)}
+  function novaPetala(inicio){
+    return {x:Math.random()*innerWidth, y:inicio?-20-Math.random()*innerHeight*.6:-20,
+      r:5+Math.random()*7, vy:.8+Math.random()*1.6, vx:-.4+Math.random()*.8,
+      a:Math.random()*6.28, va:-.04+Math.random()*.08, osc:Math.random()*6.28,
+      cor:Math.random()<.62?"#ffffff":(Math.random()<.6?"#f7c6d2":"#f3e3bd")};
+  }
+  function desenha(p){
+    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);
+    ctx.fillStyle=p.cor;ctx.strokeStyle="rgba(214,95,128,.35)";ctx.lineWidth=.8;
+    ctx.beginPath();ctx.ellipse(0,0,p.r*.45,p.r,0,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();
+  }
+  function quadro(t){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    for(var i=petalas.length-1;i>=0;i--){
+      var p=petalas[i];p.osc+=.03;p.x+=p.vx+Math.sin(p.osc)*.6;p.y+=p.vy;p.a+=p.va;desenha(p);
+      if(p.y>innerHeight+30){ if(performance.now()<fimChuva) petalas[i]=novaPetala(false); else petalas.splice(i,1); }
+    }
+    if(petalas.length){requestAnimationFrame(quadro)}else{rodando=false;ctx.clearRect(0,0,innerWidth,innerHeight)}
+  }
+  function chuva(ms,qtd){
+    if(reduz) return;
+    ajusta();fimChuva=performance.now()+ms;
+    for(var i=0;i<qtd;i++) petalas.push(novaPetala(true));
+    if(!rodando){rodando=true;requestAnimationFrame(quadro)}
+  }
+  addEventListener("resize",function(){if(rodando)ajusta()});
+
+  var ab=$("abertura");
+  document.documentElement.style.overflow="hidden";
+  chuva(2500,18);
+  $("abrir").addEventListener("click",function(){
+    ab.classList.add("saindo");
+    document.documentElement.style.overflow="";
+    document.body.classList.add("anima");
+    chuva(4200,46);
+    setTimeout(function(){ab.hidden=true},950);
+  });
+  if(location.hash && location.hash.length>1){ /* link direto para uma seção: pula a abertura */
+    ab.hidden=true;document.documentElement.style.overflow="";
+  }
+
+  /* ===== Mapas ===== */
+  var q=encodeURIComponent(ENDERECO);
+  $("maps").href="https://www.google.com/maps/search/?api=1&query="+q;
+  $("waze").href="https://waze.com/ul?q="+q+"&navigate=yes";
+
+  /* ===== Contador ===== */
+  function dois(n){return n<10?"0"+n:""+n}
+  function tick(){
+    var ms=EVENTO-new Date();
+    if(ms<=0){
+      $("contador").hidden=true;var f=$("contador-fim");f.hidden=false;
+      var dias=Math.floor((new Date()-EVENTO)/864e5);
+      f.textContent=dias<1?"É hoje! Esperamos você":"Obrigado por celebrar com a gente";
+      return;
+    }
+    var s=Math.floor(ms/1000);
+    $("c-d").textContent=Math.floor(s/86400);
+    $("c-h").textContent=dois(Math.floor(s%86400/3600));
+    $("c-m").textContent=dois(Math.floor(s%3600/60));
+    $("c-s").textContent=dois(s%60);
+    setTimeout(tick,1000-(Date.now()%1000));
+  }
+  tick();
+
+  /* ===== Lista de presentes com estoque ao vivo ===== */
+  function plural(n,un){return n===1?un:un+"s"}
+  var RESTA=null, ATUALIZADO=null, ESTOQUE_OK=false, carregando=true;
+  var escolha={}; // id -> quantidade
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+  function resta(id){return RESTA&&id in RESTA?RESTA[id]:LINHAS[id].total}
+
+  function controle(id){
+    var L=LINHAS[id];
+    if(carregando) return '<span class="ctrl"><span class="pill-esg" style="opacity:.6">…</span></span>';
+    var r=resta(id), q=escolha[id]||0;
+    if(r<=0) return '<span class="ctrl"><span class="pill-esg">Esgotado</span></span>';
+    if(q>0) return '<span class="ctrl"><span class="mini" role="group" aria-label="Quantidade que você vai levar: '+esc(L.rot)+'">'+
+      '<button type="button" data-acao="menos" data-id="'+id+'" aria-label="Diminuir">−</button>'+
+      '<output>'+q+'</output>'+
+      '<button type="button" data-acao="mais" data-id="'+id+'" aria-label="Aumentar"'+(q>=r?' disabled':'')+'>+</button></span></span>';
+    return '<span class="ctrl"><button type="button" class="escolher" data-acao="escolher" data-id="'+id+'" aria-label="Escolher '+esc(L.rot)+'">Escolher</button></span>';
+  }
+  function linhaHTML(id,titulo,obs,extra){
+    var L=LINHAS[id], r=resta(id), g=L.total-r;
+    var txt=carregando?"Consultando disponibilidade…":(r<=0?"Todos já garantidos":(r===L.total?"Precisamos de "+L.total+" "+plural(L.total,L.un):"Restam "+r+" de "+L.total+" "+plural(L.total,L.un)));
+    var cls="linha"+(extra||"")+(!carregando&&r<=0?" esgotado":(!carregando&&r===1&&L.total>1?" pouco":""));
+    return '<li class="'+cls+'"><span class="nm"><span class="tit">'+esc(titulo)+(obs?'<small>'+esc(obs)+'</small>':'')+'</span>'+
+      '<span class="resta">'+txt+'</span><span class="barra-q" aria-hidden="true"><i style="width:'+(carregando?0:Math.round(g/L.total*100))+'%"></i></span></span>'+controle(id)+'</li>';
+  }
+  function montaLista(){
+    var foco=document.activeElement&&document.activeElement.dataset?[document.activeElement.dataset.acao,document.activeElement.dataset.id]:null;
+    var html="";
+    PRESENTES.forEach(function(g){
+      html+='<div class="grupo"><h4>'+esc(g.grupo)+'</h4><ul class="itens">';
+      g.itens.forEach(function(it){
+        if(it.tamanhos){
+          html+='<li class="sub">'+esc(it.nome)+'</li>';
+          it.tamanhos.forEach(function(t){html+=linhaHTML(slug(it.nome)+"-"+slug(t[0]),"Tamanho "+t[0],null," tam")});
+        }else html+=linhaHTML(slug(it.nome),it.nome,it.obs);
+      });
+      html+='</ul></div>';
+    });
+    $("grupos").innerHTML=html;
+    if(foco&&foco[1]){
+      var alvo=$("grupos").querySelector('[data-acao="'+foco[0]+'"][data-id="'+foco[1]+'"]:not([disabled])')||$("grupos").querySelector('[data-id="'+foco[1]+'"]:not([disabled])');
+      if(alvo)alvo.focus();
+    }
+    var at=$("atualizado");
+    if(!carregando&&!ESTOQUE_OK){at.textContent="Não foi possível consultar a disponibilidade agora. Mostrando as quantidades da lista completa.";at.hidden=false}
+    else at.hidden=true;
+  }
+  // Ajusta escolhas que passaram do que ainda resta (outro convidado confirmou antes)
+  function encaixaEscolhas(){
+    var mudou=[];
+    Object.keys(escolha).forEach(function(id){
+      var r=resta(id);
+      if(escolha[id]>r){mudou.push(LINHAS[id].rot);if(r>0)escolha[id]=r;else delete escolha[id]}
+    });
+    return mudou;
+  }
+  function sincroniza(){
+    var box=$("escolhidos"), ids=Object.keys(escolha).filter(function(id){return escolha[id]>0});
+    if(!ids.length){box.innerHTML='<span class="vazio">Nenhum presente escolhido</span>';return}
+    box.innerHTML="";
+    ids.forEach(function(id){
+      var L=LINHAS[id], s=document.createElement("span");s.className="tag";s.textContent=escolha[id]+"× "+L.rot;
+      var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Remover "+L.rot);b.textContent="×";
+      b.addEventListener("click",function(){delete escolha[id];montaLista();sincroniza()});
+      s.appendChild(b);box.appendChild(s);
+    });
+  }
+  function listaEscolhas(){return Object.keys(escolha).filter(function(id){return escolha[id]>0}).map(function(id){return escolha[id]+" "+plural(escolha[id],LINHAS[id].un)+" – "+LINHAS[id].rot})}
+
+  function aplicaEstoque(d){
+    if(d&&d.restante){RESTA=d.restante;ATUALIZADO=d.atualizado;ESTOQUE_OK=true}
+    carregando=false;
+    var mudou=encaixaEscolhas();
+    montaLista();sincroniza();
+    if(mudou.length)toast("Sua escolha foi ajustada: outro convidado já garantiu parte de "+mudou.join(", "));
+  }
+  function carregaEstoque(){
+    return fetch("/api/estoque",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()})
+      .then(aplicaEstoque,function(){if(carregando){carregando=false;ESTOQUE_OK=false;montaLista()}});
+  }
+  montaLista();sincroniza();carregaEstoque();
+  setInterval(function(){if(document.visibilityState==="visible")carregaEstoque()},45000);
+  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible")carregaEstoque()});
+
+  $("grupos").addEventListener("click",function(e){
+    var b=e.target.closest("[data-acao]");if(!b||b.disabled)return;
+    var id=b.dataset.id, a=b.dataset.acao;if(!LINHAS[id])return;
+    if(a==="escolher"){escolha[id]=1;toast("Adicionado à sua confirmação")}
+    else if(a==="mais"){escolha[id]=Math.min((escolha[id]||0)+1,resta(id))}
+    else if(a==="menos"){escolha[id]=(escolha[id]||0)-1;if(escolha[id]<=0)delete escolha[id]}
+    montaLista();sincroniza();
+  });
+
+  /* ===== Confirmação ===== */
+  var acomp=0;
+  function atualizaAcomp(){
+    $("acomp").textContent=acomp;
+    var tot=acomp+1;$("total-pessoas").textContent=tot+(tot===1?" pessoa no total":" pessoas no total");
+    $("menos").disabled=acomp===0;
+  }
+  $("menos").addEventListener("click",function(){if(acomp>0){acomp--;atualizaAcomp()}});
+  $("mais").addEventListener("click",function(){if(acomp<10){acomp++;atualizaAcomp()}});
+  atualizaAcomp();
+  function presenca(){var r=document.querySelector('input[name="presenca"]:checked');return r?r.value:""}
+  document.querySelectorAll('input[name="presenca"]').forEach(function(r){
+    r.addEventListener("change",function(){$("bloco-acomp").hidden=presenca()==="nao"});
+  });
+  function novoId(){try{return crypto.randomUUID()}catch(e){return Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,12)}}
+  var envioId=novoId(), textoMsg="", enviando=false;
+
+  function montaMensagem(nome,p,rec){
+    var l=["Olá! Confirmação para o Baby Chá da Maria Laura (07/11, 17h)","","Nome: "+nome];
+    if(p==="sim"){l.push("Presença: Vou comparecer");l.push("Acompanhantes: "+acomp+" (total de "+(acomp+1)+(acomp===0?" pessoa)":" pessoas)"))}
+    else l.push("Presença: Não poderei ir");
+    var pres=listaEscolhas();if(pres.length){l.push("");l.push("Vou levar:");pres.forEach(function(r){l.push("- "+r)})}
+    if(rec){l.push("");l.push("Recado: "+rec)}
+    return l.join("\n");
+  }
+  function mostraResultado(titulo,nota,mostraWhats){
+    $("res-titulo").textContent=titulo;
+    $("mensagem").textContent=textoMsg;
+    $("nota-envio").textContent=nota;
+    var env=$("enviar-whats");
+    env.href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(textoMsg);
+    env.hidden=!mostraWhats;
+    var res=$("resultado");res.hidden=false;
+    res.scrollIntoView({behavior:reduz?"auto":"smooth",block:"center"});
+    try{res.focus({preventScroll:true})}catch(_){}
+  }
+
+  $("form-rsvp").addEventListener("submit",function(e){
+    e.preventDefault();
+    if(enviando)return;
+    var nome=$("nome").value.trim(), p=presenca(), erro=$("erro");
+    if(!nome){erro.textContent="Escreva seu nome para a mamãe saber quem confirmou.";erro.hidden=false;$("nome").focus();return}
+    if(!p){erro.textContent="Escolha se você vai ou não ao Baby Chá.";erro.hidden=false;$("p-sim").focus();return}
+    erro.hidden=true;
+    var rec=$("recado").value.trim();
+    var pres={};Object.keys(escolha).forEach(function(id){if(escolha[id]>0)pres[id]=escolha[id]});
+    textoMsg=montaMensagem(nome,p,rec);
+    var bt=$("enviar-rsvp");enviando=true;bt.disabled=true;bt.lastChild.textContent=" Enviando...";
+    fetch("/api/confirmar",{method:"POST",headers:{"content-type":"application/json"},
+      body:JSON.stringify({id:envioId,nome:nome,presenca:p,acompanhantes:acomp,recado:rec,presentes:pres})})
+    .then(function(r){return r.json().catch(function(){return {}}).then(function(d){return {st:r.status,d:d}})})
+    .then(function(x){
+      if(x.st===200&&x.d.ok){
+        escolha={};
+        aplicaEstoque(x.d);
+        $("form-rsvp").hidden=true;
+        mostraResultado(p==="sim"?"Presença confirmada!":"Resposta registrada",
+          "Sua resposta já está guardada"+(Object.keys(pres).length?" e os presentes ficaram reservados para você":"")+". Se quiser, avise a família também pelo WhatsApp.",true);
+        $("de-novo").hidden=false;
+        chuva(2600,36);
+      }else if(x.st===409&&x.d.erro==="esgotou"){
+        aplicaEstoque(x.d);
+        var nomes=(x.d.indisponiveis||[]).map(function(i){return i.rot+(i.resta>0?" (agora restam "+i.resta+")":" (esgotou)")});
+        erro.textContent="Enquanto você escolhia, outro convidado garantiu: "+nomes.join("; ")+". Ajustamos sua escolha. Confira os presentes e toque em confirmar de novo.";
+        erro.hidden=false;erro.scrollIntoView({behavior:reduz?"auto":"smooth",block:"center"});
+      }else{
+        erro.textContent=(x.d&&x.d.mensagem)||"Não foi possível registrar agora. Tente de novo em instantes.";
+        erro.hidden=false;
+      }
+    },function(){
+      erro.textContent="Sem conexão com o convite agora. Verifique sua internet e tente de novo.";erro.hidden=false;
+    }).then(function(){enviando=false;bt.disabled=false;bt.lastChild.textContent=" Confirmar presença"});
+  });
+  $("copiar-msg").addEventListener("click",function(){copiar(textoMsg,"Mensagem copiada",$("resultado"))});
+  $("de-novo").addEventListener("click",function(){
+    envioId=novoId();escolha={};acomp=0;atualizaAcomp();
+    $("form-rsvp").reset();$("bloco-acomp").hidden=false;
+    $("form-rsvp").hidden=false;$("resultado").hidden=true;$("de-novo").hidden=true;
+    montaLista();sincroniza();$("nome").focus();
+  });
+
+  /* Destaque na barra inferior */
+  var links=[].slice.call(document.querySelectorAll("nav.barra a"));
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){
+      if(en.isIntersecting){links.forEach(function(a){a.classList.toggle("ativo",a.getAttribute("href")==="#"+en.target.id)})}
+    })},{rootMargin:"-45% 0px -50% 0px"});
+    ["convite","confirmar","presentes"].forEach(function(id){io.observe($(id))});
+  }
+})();
+</script>
+</body>
+</html>
